@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {UserAuthService} from '../../services/user-auth.service';
 
 @Component({
   selector: 'scratch-header',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  public currentUser;
+
+  constructor(private userAuthService: UserAuthService) {
+  }
 
   ngOnInit() {
+    this.userAuthService.getCurrentUser().subscribe(data => {
+      this.currentUser = data;
+    })
+  }
+
+  signIn() {
+
+  }
+
+  signUp() {
+
   }
 
 }

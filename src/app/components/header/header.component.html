@@ -1,5 +1,18 @@
 <div class="header">
+  <div class="header-logo"></div>
   <div class="menu-part">
-    <a routerLink="/info">Info</a>
+    <a class="menu-item" routerLink="/info"> Info </a>
+  </div>
+  <input type="text" class="header-search" placeholder="Search something"/>
+  <div class="header-login">
+    <div class="login-part" *ngIf="currentUser">
+      <div class="authorized-icon"></div>
+      <div class="authorized-username"></div>
+    </div>
+    <div class="login-part" *ngIf="!currentUser">
+      <div class="sign-in" (click)="signIn()">Sign in</div>
+      <div class="user-unauthorized-separator">or</div>
+      <div class="sign-up" (click)="signUp()">Sign up</div>
+    </div>
   </div>
 </div>

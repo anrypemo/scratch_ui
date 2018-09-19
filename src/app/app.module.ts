@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { InformationComponent } from './components/information/information.component';
+import {UserAuthService} from './services/user-auth.service';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -16,9 +18,10 @@ import { InformationComponent } from './components/information/information.compo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [UserAuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
