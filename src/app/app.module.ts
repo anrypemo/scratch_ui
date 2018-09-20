@@ -7,7 +7,7 @@ import {AngularSvgIconModule} from 'angular-svg-icon';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './components/header/header.component';
 import {AppRoutingModule} from './app-routing.module';
-import {InformationComponent} from './components/information/information.component';
+import {MapComponent} from './components/shared-components/map/map.component';
 import {UserAuthService} from './services/user-auth.service';
 
 
@@ -15,7 +15,7 @@ import {UserAuthService} from './services/user-auth.service';
   declarations: [
     AppComponent,
     HeaderComponent,
-    InformationComponent
+    MapComponent
   ],
   imports: [
     BrowserModule,
