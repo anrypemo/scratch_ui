@@ -5,7 +5,6 @@
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -302,10 +301,6 @@
      d="M881.29,38.39l-2.36,1.54l-0.56,1.96l1.11,1.26l2.5-0.84l2.5,0.84l1.39,0.42l-0.14-4.62L881.29,38.39L881.29,38.39z" class="state"/><path
      id="st. lawrence island west"
      d="M69.17,53.35l3.46,6.47l2.22-0.5v-2.24L69.17,53.35L69.17,53.35z" class="state"/><path
-     id="alaska"
-     d="M883.4,17.54l-4.22,7.57l8.08,5.11l9.05-7.59l5.5,9.17l-5.74,1.18l-2.27,5.88l12.71,17.22l7.65,1.27l11.03,2.17l1.36-4L930.4,57l0.73,16.75L924,85.62l3.44,0.75l8.98-18.92l2.73-14.16l-5.54-2.59l-0.89-19l4.27,0.83l-0.04,11.43l4.66,4.07l2.72-9.93l-2.18-5.9l6.58,3.15l0.69-34.99L873.66,0.5l-4.36,3.35l0.59,6.77l13.43,1.84l10.31-2.35l-3.7,6.92L883.4,17.54L883.4,17.54z" class="state"/><path
-     id="chukotka"
-     d="M1.17,54.95l14.01,1.57l2.34,4.84l11.16-6.54l18.68-2.61l1.3-9.67l9.34-3.4l6.1-5.75v7.84l6.23,8.5L83.3,41.5l-6.23-7.06L69.29,13.4L59.94,2.67l-6.62-0.52L53.06,7.9l-5.45,2.75l-1.69-3.4l3.24-6.93L1.3,0.45L1.17,54.95L1.17,54.95z" class="state"/><path
      id="wrangel-w"
      d="M78.49,3.32L74.6,6.85l1.17,2.61l2.08-1.44l1.17,1.31L82.9,7.9l-0.13-2.22L78.49,3.32L78.49,3.32z" class="state"/><path
      id="unalaska west"
