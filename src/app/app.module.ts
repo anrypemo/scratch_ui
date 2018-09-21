@@ -9,13 +9,15 @@ import {HeaderComponent} from './components/header/header.component';
 import {AppRoutingModule} from './app-routing.module';
 import {MapComponent} from './components/shared-components/map/map.component';
 import {UserAuthService} from './services/user-auth.service';
+import {WindroseComponent} from './components/shared-components/windrose/windrose.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    MapComponent
+    MapComponent,
+    WindroseComponent
   ],
   imports: [
     BrowserModule,

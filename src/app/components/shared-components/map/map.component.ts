@@ -15,8 +15,8 @@ export class MapComponent implements OnInit {
   public hoverRegion: any;
   public countries = [];
   private countriesUrl = "./assets/countries_id_list.json";
-  private width;
-  private height;
+  public width;
+  public height;
 
 
   constructor(private el: ElementRef, private http: HttpClient) {
@@ -47,8 +47,8 @@ export class MapComponent implements OnInit {
   }
 
   private setMapSize() {
-    this.height = screen.height;
-    this.width = this.height * WIDTH_HEIGHT_PARAMETER;
+    this.height = window.innerHeight-60;
+    this.width = window.innerWidth;
   }
 
 
