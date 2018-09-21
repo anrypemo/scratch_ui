@@ -2,6 +2,8 @@ import {Component, ElementRef, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
 
+const WIDTH_HEIGHT_PARAMETER = 1.53;
+
 @Component({
   selector: 'scratch-map',
   templateUrl: './map.component.html',
@@ -13,6 +15,9 @@ export class MapComponent implements OnInit {
   public hoverRegion: any;
   public countries = [];
   private countriesUrl = "./assets/countries_id_list.json";
+  private width;
+  private height;
+
 
   constructor(private el: ElementRef, private http: HttpClient) {
   }
@@ -23,6 +28,7 @@ export class MapComponent implements OnInit {
 
 
   ngOnInit() {
+    this.setMapSize();
     this.createCountriesList();
   }
 
@@ -38,6 +44,11 @@ export class MapComponent implements OnInit {
       this.countries = data;
       this.createDummyData();
     });
+  }
+
+  private setMapSize() {
+    this.height = screen.height;
+    this.width = this.height * WIDTH_HEIGHT_PARAMETER;
   }
 
 
@@ -62,5 +73,6 @@ export class MapComponent implements OnInit {
     console.log(elementById);
     elementById.style.fill = 'black';
   }
+
 
 }

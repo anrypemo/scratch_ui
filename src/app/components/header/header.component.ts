@@ -10,6 +10,9 @@ export class HeaderComponent implements OnInit {
 
   public currentUser;
 
+  public greetings;
+
+
   constructor(private userAuthService: UserAuthService) {
   }
 
@@ -25,6 +28,12 @@ export class HeaderComponent implements OnInit {
 
   signUp() {
 
+  }
+
+  testGreetings(){
+    this.userAuthService.testGreetings().subscribe(data => {
+      this.greetings=data["response"];
+    })
   }
 
 }

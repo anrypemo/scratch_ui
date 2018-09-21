@@ -1,4 +1,5 @@
 <div class="container-map">
-  <svg-icon src="assets/black_world_map.svg" (click)="mouseEnterElement($event)"></svg-icon>
-
+  <svg-icon src="assets/black_world_map.svg"
+            [svgStyle]="{'width.px':width, 'height.px': height}"
+            (click)="mouseEnterElement($event)"></svg-icon>
 </div>
