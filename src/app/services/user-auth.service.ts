@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
 
@@ -22,6 +22,13 @@ export class UserAuthService {
 
   testGreetings() {
     return this.http.get('http://localhost:8080/test');
+  }
+
+  testLogin() {
+    const body = {username: "test", password: "test123"};
+
+    return this.http.post('http://localhost:8080/login', JSON.stringify(body));
+
   }
 
 }

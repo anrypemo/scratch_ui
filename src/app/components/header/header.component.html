@@ -1,6 +1,9 @@
 <div class="header">
   <div class="header-logo" *ngIf="greetings">{{greetings}}</div>
   <button (click)="testGreetings()" *ngIf="!greetings">I want greetings</button>
+  <button (click)="testLogin()" >Test login</button>
+  <div class="header-logo" *ngIf="currentUser">{{currentUser}}</div>
+
   <div class="menu-part">
     <a class="menu-item" routerLink="/info"> Info </a>
   </div>
