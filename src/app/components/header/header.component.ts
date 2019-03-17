@@ -32,10 +32,4 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  testLogin(){
-    this.userAuthService.testLogin().subscribe(data => {
-      this.currentUser=data["response"];
-    })
-  }
-
 }
