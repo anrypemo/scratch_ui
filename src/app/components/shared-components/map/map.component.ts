@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from "rxjs";
 import {HttpClient} from '@angular/common/http';
 
 const WIDTH_HEIGHT_PARAMETER = 1.53;
@@ -13,7 +13,7 @@ export class MapComponent implements OnInit {
   public dummyData: any;
   public dataTemp = new Map();
   public hoverRegion: any;
-  public countries = [];
+  public countries: any[] = [];
   private countriesUrl = "./assets/countries_id_list.json";
   public width;
   public height;
@@ -22,8 +22,8 @@ export class MapComponent implements OnInit {
   constructor(private el: ElementRef, private http: HttpClient) {
   }
 
-  public getJSON(): Observable<any> {
-    return this.http.get(this.countriesUrl)
+  public getJSON(): Observable<any[]> {
+    return this.http.get<any[]>(this.countriesUrl);
   }
 
 

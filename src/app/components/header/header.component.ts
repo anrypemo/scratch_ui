@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserAuthService} from '../../services/user-auth.service';
+import {User} from "../../model/user";
 
 @Component({
   selector: 'scratch-header',
@@ -8,7 +9,7 @@ import {UserAuthService} from '../../services/user-auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  public currentUser;
+  public currentUser: User;
 
   public greetings;
 
@@ -17,23 +18,18 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userAuthService.getCurrentUser().subscribe(data => {
-      this.currentUser = data;
-    })
+
   }
 
   signIn() {
-
+    this.userAuthService.login({username: "Test", password: "Test"}).subscribe(user => {
+      this.currentUser = user;
+    })
   }
 
   signUp() {
 
   }
 
-  testGreetings(){
-    this.userAuthService.testGreetings().subscribe(data => {
-      this.greetings=data["response"];
-    })
-  }
 
 }

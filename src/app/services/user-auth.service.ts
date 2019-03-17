@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import 'rxjs/add/operator/map';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from "rxjs";
+import {post} from "selenium-webdriver/http";
+import {User} from "../model/user";
 
 
 @Injectable()
@@ -8,8 +10,8 @@ export class UserAuthService {
   constructor(private http: HttpClient) {
   }
 
-  login(username: string, password: string) {
-
+  login(user: User): Observable<User> {
+    return this.http.post<User>('http://localhost:8080/login', user);
   }
 
   logout() {
@@ -20,8 +22,8 @@ export class UserAuthService {
     return null;
   }
 
-  testGreetings() {
-    return this.http.get('http://localhost:8080/test');
+  testGreetings(): Observable<any> {
+    return this.http.get<any>('http://localhost:8080/test');
   }
 
 }
