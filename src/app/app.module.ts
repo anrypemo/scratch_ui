@@ -10,6 +10,10 @@ import {AppRoutingModule} from './app-routing.module';
 import {MapComponent} from './components/shared-components/map/map.component';
 import {UserAuthService} from './services/user-auth.service';
 import {WindroseComponent} from './components/shared-components/windrose/windrose.component';
+import {DashboardComponent} from "./components/pages/dashboard-page/dashboard.component";
+import {LoginPageComponent} from "./components/pages/login-page/login-page.component";
+import {LoginComponent} from "./components/login-form/login.component";
+import {UiComponentsModule} from "./components/shared-components/ui-components/ui-components.module";
 
 
 @NgModule({
@@ -17,13 +21,17 @@ import {WindroseComponent} from './components/shared-components/windrose/windros
     AppComponent,
     HeaderComponent,
     MapComponent,
-    WindroseComponent
+    WindroseComponent,
+    DashboardComponent,
+    LoginPageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AngularSvgIconModule
+    AngularSvgIconModule,
+    UiComponentsModule
   ],
   providers: [UserAuthService],
   bootstrap: [AppComponent]

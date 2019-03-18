@@ -1,0 +1,12 @@
+<input #uiText
+       type="text"
+       class="ui-text-input__input"
+       [placeholder]="placeholder"
+       [disabled]="disabled"
+       [(ngModel)]="value"
+       (focus)="_onFocus($event)"
+       (blur)="_onBlur($event)"
+       (change)="_onSubmitValueChange($event)"
+       (keydown)="_onKeyDown($event)"
+       [class._focused]="focused"
+/>

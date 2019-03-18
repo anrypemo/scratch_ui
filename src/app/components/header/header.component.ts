@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserAuthService} from '../../services/user-auth.service';
 import {User} from "../../model/user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'scratch-header',
@@ -11,24 +12,22 @@ export class HeaderComponent implements OnInit {
 
   public currentUser: User;
 
-  public greetings;
 
-
-  constructor(private userAuthService: UserAuthService) {
+  constructor(private userAuthService: UserAuthService,
+              private router: Router) {
   }
 
   ngOnInit() {
 
   }
 
-  signIn() {
-    this.userAuthService.login({username: "Test", password: "Test"}).subscribe(user => {
-      this.currentUser = user;
-    })
-  }
 
   signUp() {
 
+  }
+
+  signIn(){
+    this.router.navigate(['login']);
   }
 
 

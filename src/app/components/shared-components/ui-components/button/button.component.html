@@ -1,0 +1,9 @@
+<button #button
+        class="ui-button__button _{{type}}"
+        [disabled]="disabled"
+        (click)="_onClick($event)"
+        (keydown.enter)="_onClick($event)"
+        (keydown.space)="_onClick($event)"
+>
+  <span class="ui-button__text">{{text}}</span>
+</button>

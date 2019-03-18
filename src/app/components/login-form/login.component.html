@@ -1,0 +1,27 @@
+<div class="login">
+  <div class="login-title">Sign in to Scratch</div>
+  <div class="login-container">
+    <div class="login-form">
+      <div class="login-form__label">Username or email address</div>
+      <div class="login-form__field">
+        <ui-field-input
+          [placeholder]="'Username'"
+          [(value)]="user.username"
+        ></ui-field-input>
+      </div>
+      <div class="login-form__label">Password
+        <a href="/login/password-reset">Forgot password?</a>
+      </div>
+      <div class="login-form__field">
+        <ui-field-input
+          [placeholder]="'Password'"
+          [(value)]="user.password"
+        ></ui-field-input>
+      </div>
+      <ui-button
+        [text]="'Sign In'"
+        (onClick)="onSubmit()"
+      ></ui-button>
+    </div>
+  </div>
+</div>
