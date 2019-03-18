@@ -1,17 +1,19 @@
 <div class="header">
-  <div class="menu-part">
-    <a class="menu-item" routerLink="/info"> Info </a>
+<div class="menu-part">
+  <a class="menu-item" routerLink="/info"> Info </a>
+</div>
+<ui-field-input class="header-search"
+                [placeholder]="'Search something'">
+</ui-field-input>
+<div class="header-login">
+  <div class="login-part" *ngIf="currentUser">
+    <div class="authorized-icon"></div>
+    <div class="authorized-username">{{currentUser.username}}</div>
   </div>
-  <input type="text" class="header-search" placeholder="Search something"/>
-  <div class="header-login">
-    <div class="login-part" *ngIf="currentUser">
-      <div class="authorized-icon"></div>
-      <div class="authorized-username">{{currentUser.username}}</div>
-    </div>
-    <div class="login-part" *ngIf="!currentUser">
-      <div class="sign-in" (click)="signIn()">Sign in</div>
-      <div class="user-unauthorized-separator">or</div>
-      <div class="sign-up" (click)="signUp()">Sign up</div>
-    </div>
+  <div class="login-part" *ngIf="!currentUser">
+    <div class="sign-in" (click)="signIn()">Sign in</div>
+    <div class="user-unauthorized-separator">or</div>
+    <div class="sign-up" (click)="signUp()">Sign up</div>
   </div>
+</div>
 </div>
