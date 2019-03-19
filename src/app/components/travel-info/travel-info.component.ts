@@ -20,7 +20,7 @@ export class TravelInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-
+   this.createCountriesList();
   }
 
   public getJSON(): Observable<any[]> {
