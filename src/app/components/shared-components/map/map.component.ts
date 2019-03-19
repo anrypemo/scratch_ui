@@ -1,6 +1,4 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {HttpClient} from '@angular/common/http';
+import {Component, Input, OnInit} from '@angular/core';
 
 const WIDTH_HEIGHT_PARAMETER = 1.53;
 
@@ -10,44 +8,30 @@ const WIDTH_HEIGHT_PARAMETER = 1.53;
   styleUrls: ['./map.component.less']
 })
 export class MapComponent implements OnInit {
-  public dummyData: any;
-  public dataTemp = new Map();
-  public hoverRegion: any;
+
+  @Input()
   public countries: any[] = [];
-  private countriesUrl = "./assets/countries_id_list.json";
+  @Input()
+  public mapUrl;
+  @Input()
+  public dummyData: any;
+
+  public hoverRegion: any;
   public width;
   public height;
 
 
-  constructor(private el: ElementRef, private http: HttpClient) {
-  }
-
-  public getJSON(): Observable<any[]> {
-    return this.http.get<any[]>(this.countriesUrl);
+  constructor() {
   }
 
 
   ngOnInit() {
     this.setMapSize();
-    this.createCountriesList();
   }
 
-  createDummyData() {
-    this.countries.forEach(country => {
-      this.dataTemp.set(country, Math.random());
-    });
-    this.dummyData = this.dataTemp;
-  }
-
-  createCountriesList() {
-    this.getJSON().subscribe(data => {
-      this.countries = data;
-      this.createDummyData();
-    });
-  }
 
   private setMapSize() {
-    this.height = window.innerHeight-60;
+    this.height = window.innerHeight - 60;
     this.width = window.innerWidth;
   }
 
@@ -62,9 +46,9 @@ export class MapComponent implements OnInit {
     }
     const elementById = document.getElementById(elem.target.id);
     console.log(elementById);
-    if(elementById.classList.contains("_visited")) {
+    if (elementById.classList.contains("_visited")) {
       elementById.classList.remove("_visited");
-    }else{
+    } else {
       elementById.classList.add("_visited");
     }
   }

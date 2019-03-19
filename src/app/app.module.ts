@@ -14,6 +14,7 @@ import {DashboardComponent} from "./components/pages/dashboard-page/dashboard.co
 import {LoginPageComponent} from "./components/pages/login-page/login-page.component";
 import {LoginComponent} from "./components/login-form/login.component";
 import {UiComponentsModule} from "./components/shared-components/ui-components/ui-components.module";
+import {TravelInfoComponent} from "./components/travel-info/travel-info.component";
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {UiComponentsModule} from "./components/shared-components/ui-components/u
     WindroseComponent,
     DashboardComponent,
     LoginPageComponent,
-    LoginComponent
+    LoginComponent,
+    TravelInfoComponent
   ],
   imports: [
     BrowserModule,

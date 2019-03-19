@@ -629,6 +629,9 @@
 			 ._visited {
 				fill: #FFD700;
 			}
+			.state:not(._visited):hover {
+			 fill: #FAFAD2;
+			}
 		]]></style>
 	</defs>
 </svg>
