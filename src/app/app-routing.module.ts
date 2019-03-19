@@ -22,10 +22,9 @@ const routes: Routes = [
         path: 'info',
         component: MapComponent
       },
+      {path: '', redirectTo: 'info', pathMatch: 'full'}
     ]
-  },
-
-  {path: '', redirectTo: 'info', pathMatch: 'full'}
+  }
 ];
 
 

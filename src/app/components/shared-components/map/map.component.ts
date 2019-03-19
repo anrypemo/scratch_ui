@@ -62,7 +62,11 @@ export class MapComponent implements OnInit {
     }
     const elementById = document.getElementById(elem.target.id);
     console.log(elementById);
-    elementById.style.fill = 'green';
+    if(elementById.classList.contains("_visited")) {
+      elementById.classList.remove("_visited");
+    }else{
+      elementById.classList.add("_visited");
+    }
   }
 
   mouseLeaveElement(elem) {
