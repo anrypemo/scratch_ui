@@ -9,8 +9,12 @@ export class UserAuthService {
   constructor(private http: HttpClient) {
   }
 
-  login(user: User): Observable<User> {
-    return this.http.post<User>('http://localhost:8080/login', user);
+  login(loginPayload) {
+    const headers = {
+      'Authorization': 'Basic ' + btoa('scratch-client:scratch-secret'),
+      'Content-type': 'application/x-www-form-urlencoded'
+    };
+    return this.http.post('http://localhost:8080/' + 'oauth/token', loginPayload, {headers});
   }
 
   logout() {

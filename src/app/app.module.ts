@@ -15,6 +15,7 @@ import {LoginPageComponent} from "./components/pages/login-page/login-page.compo
 import {LoginComponent} from "./components/login-form/login.component";
 import {UiComponentsModule} from "./components/shared-components/ui-components/ui-components.module";
 import {TravelInfoComponent} from "./components/travel-info/travel-info.component";
+import {AuthGuard} from "./components/guards/auth.guard";
 
 
 @NgModule({
@@ -35,7 +36,9 @@ import {TravelInfoComponent} from "./components/travel-info/travel-info.componen
     AngularSvgIconModule,
     UiComponentsModule
   ],
-  providers: [UserAuthService],
+  providers: [UserAuthService,
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

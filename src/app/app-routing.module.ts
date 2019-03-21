@@ -4,6 +4,7 @@ import {LoginPageComponent} from "./components/pages/login-page/login-page.compo
 import {DashboardComponent} from "./components/pages/dashboard-page/dashboard.component";
 import {LoginComponent} from "./components/login-form/login.component";
 import {TravelInfoComponent} from "./components/travel-info/travel-info.component";
+import {AuthGuard} from "./components/guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -17,9 +18,11 @@ const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
+    canActivate:[AuthGuard],
     children: [
       {
         path: 'info',
+        canActivate:[AuthGuard],
         component: TravelInfoComponent
       },
       {path: '', redirectTo: 'info', pathMatch: 'full'}
