@@ -25,8 +25,8 @@ export class UserAuthService {
     return null;
   }
 
-  testGreetings(): Observable<any> {
-    return this.http.get<any>('http://localhost:8080/test');
+  test(user): Observable<any> {
+    return this.http.post<any>('http://localhost:8080/login', user);
   }
 
 }

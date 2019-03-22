@@ -23,7 +23,9 @@ export class HeaderComponent implements OnInit {
 
 
   signUp() {
-
+   this.userAuthService.test({username: "test", password: "test"}).subscribe(data=>{
+     console.log(data);
+   })
   }
 
   signIn(){

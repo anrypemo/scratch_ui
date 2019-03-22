@@ -5,6 +5,8 @@ import {DashboardComponent} from "./components/pages/dashboard-page/dashboard.co
 import {LoginComponent} from "./components/login-form/login.component";
 import {TravelInfoComponent} from "./components/travel-info/travel-info.component";
 import {AuthGuard} from "./components/guards/auth.guard";
+import {ResetPasswordComponent} from "./components/reset-password/reset.password.component";
+import {RegistrationComponent} from "./components/registration/registration.component";
 
 const routes: Routes = [
   {
@@ -13,17 +15,24 @@ const routes: Routes = [
     children: [{
       path: '',
       component: LoginComponent
-    }]
+    },
+      {
+        path: 'reset-password',
+        component: ResetPasswordComponent
+      }]
   },
   {
     path: '',
     component: DashboardComponent,
-    canActivate:[AuthGuard],
     children: [
       {
         path: 'info',
-        canActivate:[AuthGuard],
+        canActivate: [AuthGuard],
         component: TravelInfoComponent
+      },
+      {
+        path: 'registration',
+        component: RegistrationComponent
       },
       {path: '', redirectTo: 'info', pathMatch: 'full'}
     ]

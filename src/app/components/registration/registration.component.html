@@ -1,0 +1,18 @@
+<div class="registration">
+  <ui-field-input class="registration__field"
+    [placeholder]="'Username'"
+    [(value)]="testValue"
+  ></ui-field-input>
+  <ui-field-input class="registration__field"
+    [placeholder]="'Email'"
+    [(value)]="testValue"
+  ></ui-field-input>
+  <ui-field-input class="registration__field"
+    [placeholder]="'Password'"
+    [(value)]="testValue"
+  ></ui-field-input>
+  <ui-button
+    [text]="'Sign Up'"
+    (onClick)="onSubmit()"
+  ></ui-button>
+</div>

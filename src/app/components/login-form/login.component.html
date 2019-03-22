@@ -1,5 +1,9 @@
 <div class="login">
   <div class="login-title">Sign in to Scratch</div>
+  <scratch-error-label *ngIf="isErrorVisible"
+                       [text]="'Username or password is incorrect'"
+                       (onClose)="isErrorVisible = false"
+  ></scratch-error-label>
   <div class="login-container">
     <div class="login-form">
       <div class="login-form__label">Username or email address</div>
@@ -10,7 +14,7 @@
         ></ui-field-input>
       </div>
       <div class="login-form__label">Password
-        <a href="/login/password-reset">Forgot password?</a>
+        <div class="login-form__link" (click)="forgotPassword()">Forgot password?</div>
       </div>
       <div class="login-form__field">
         <ui-field-input
@@ -22,6 +26,11 @@
         [text]="'Sign In'"
         (onClick)="onSubmit()"
       ></ui-button>
+    </div>
+  </div>
+  <div class="login-registration">
+    <div class="login-registration__label">New to Scratch?
+      <div class="login-form__link" (click)="registration()">Create an account</div>
     </div>
   </div>
 </div>

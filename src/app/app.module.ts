@@ -16,6 +16,8 @@ import {LoginComponent} from "./components/login-form/login.component";
 import {UiComponentsModule} from "./components/shared-components/ui-components/ui-components.module";
 import {TravelInfoComponent} from "./components/travel-info/travel-info.component";
 import {AuthGuard} from "./components/guards/auth.guard";
+import {ResetPasswordComponent} from "./components/reset-password/reset.password.component";
+import { RegistrationComponent } from './components/registration/registration.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import {AuthGuard} from "./components/guards/auth.guard";
     DashboardComponent,
     LoginPageComponent,
     LoginComponent,
-    TravelInfoComponent
+    TravelInfoComponent,
+    ResetPasswordComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
 
   public user: User = new User();
 
+  public isErrorVisible: boolean = false;
+
   constructor(private userAuthService: UserAuthService,
               private router: Router) {
   }
@@ -27,11 +29,20 @@ export class LoginComponent implements OnInit {
       .set('username', this.user.username)
       .set('password', this.user.password)
       .set('grant_type', 'password');
-    this.userAuthService.login(body).subscribe(data =>{
+    this.userAuthService.login(body).subscribe(data => {
       sessionStorage.setItem('token', JSON.stringify(data));
       this.router.navigate(['']);
     }, error => {
-      alert(error.error)
+      this.isErrorVisible = true;
     });
   }
+
+  forgotPassword() {
+    this.router.navigate(['/login/reset-password'])
+  }
+
+  registration() {
+    window.location.href = "registration";
+  }
+
 }
