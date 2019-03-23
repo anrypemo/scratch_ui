@@ -14,23 +14,27 @@ import {
 } from "@angular/core";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
+const INPUT_TYPES = {
+  text: "text",
+  password: "password"
+};
+
 
 @Component({
-  selector: 'ui-text-input',
-  templateUrl: './text.component.html',
-  styleUrls: ['./text.component.less'],
-  host: {"[class.ui-text-input]": "true"},
+  selector: 'ui-password-input',
+  templateUrl: './password.component.html',
+  styleUrls: ['./password.component.less'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => UiFieldInputComponent),
+      useExisting: forwardRef(() => UiFieldPasswordComponent),
       multi: true
     }
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 
 })
-export class UiFieldInputComponent implements AfterViewInit, OnChanges, ControlValueAccessor {
+export class UiFieldPasswordComponent implements AfterViewInit, OnChanges, ControlValueAccessor {
 
   public textValue = "";
 
@@ -63,6 +67,8 @@ export class UiFieldInputComponent implements AfterViewInit, OnChanges, ControlV
   private viewInited: boolean;
 
   public focused: boolean = false;
+
+  public type = INPUT_TYPES.password;
 
   /** @internal
    *  Only for ControlValueAccessor implementation
@@ -142,6 +148,14 @@ export class UiFieldInputComponent implements AfterViewInit, OnChanges, ControlV
 
   public _onBlur(event) {
     this.focused = false;
+  }
+
+  public unMaskValue() {
+    this.type = INPUT_TYPES.text;
+  }
+
+  public maskValue(){
+    this.type = INPUT_TYPES.password;
   }
 
 

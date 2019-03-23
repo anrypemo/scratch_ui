@@ -1,8 +1,7 @@
 import {Component, OnInit} from "@angular/core";
-import {User} from "../../model/user";
 import {UserAuthService} from "../../services/user-auth.service";
 import {Router} from "@angular/router";
-import {HttpParams} from "@angular/common/http";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -12,29 +11,37 @@ import {HttpParams} from "@angular/common/http";
 })
 export class LoginComponent implements OnInit {
 
-  public user: User = new User();
-
   public isErrorVisible: boolean = false;
+  public submitInProgress: boolean = false;
+  public formGroup: FormGroup;
 
-  constructor(private userAuthService: UserAuthService,
+  constructor(private formBuilder: FormBuilder,
+              private userAuthService: UserAuthService,
               private router: Router) {
   }
 
   ngOnInit() {
+    this.formGroup = this.formBuilder.group({
+      "username": ["", Validators.compose([Validators.required])],
+      "password": ["", Validators.compose([Validators.required])]
+    });
 
+    this.formGroup.valueChanges.subscribe((value: any) => {
+      console.log(value);
+    });
   }
 
   onSubmit() {
-    const body = new HttpParams()
-      .set('username', this.user.username)
-      .set('password', this.user.password)
-      .set('grant_type', 'password');
-    this.userAuthService.login(body).subscribe(data => {
-      sessionStorage.setItem('token', JSON.stringify(data));
-      this.router.navigate(['']);
-    }, error => {
-      this.isErrorVisible = true;
-    });
+    if (this.formGroup.valid && !this.submitInProgress) {
+      this.submitInProgress = true;
+      this.userAuthService.login(this.formGroup.value.username, this.formGroup.value.password).subscribe(data => {
+        this.router.navigate(['']);
+        this.submitInProgress = false;
+      }, error => {
+        this.isErrorVisible = true;
+        this.submitInProgress = false;
+      });
+    }
   }
 
   forgotPassword() {

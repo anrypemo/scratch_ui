@@ -5,28 +5,34 @@
                        (onClose)="isErrorVisible = false"
   ></scratch-error-label>
   <div class="login-container">
-    <div class="login-form">
-      <div class="login-form__label">Username or email address</div>
-      <div class="login-form__field">
-        <ui-field-input
-          [placeholder]="'Username'"
-          [(value)]="user.username"
-        ></ui-field-input>
+    <form novalidate
+          [formGroup]="formGroup"
+          (ngSubmit)="onSubmit()"
+    >
+      <div class="login-form">
+        <div class="login-form__label">Username or email address</div>
+        <div class="login-form__field">
+          <ui-text-input #username
+                          formControlName="username"
+                          [placeholder]="'Username'"
+          ></ui-text-input>
+        </div>
+        <div class="login-form__label">Password
+          <div class="login-form__link" (click)="forgotPassword()">Forgot password?</div>
+        </div>
+        <div class="login-form__field">
+          <ui-password-input #password
+                          formControlName="password"
+                          [placeholder]="'Password'"
+          ></ui-password-input>
+        </div>
+        <ui-button
+          [text]="'Sign In'"
+          [disabled]="!formGroup.valid"
+          (onClick)="onSubmit()"
+        ></ui-button>
       </div>
-      <div class="login-form__label">Password
-        <div class="login-form__link" (click)="forgotPassword()">Forgot password?</div>
-      </div>
-      <div class="login-form__field">
-        <ui-field-input
-          [placeholder]="'Password'"
-          [(value)]="user.password"
-        ></ui-field-input>
-      </div>
-      <ui-button
-        [text]="'Sign In'"
-        (onClick)="onSubmit()"
-      ></ui-button>
-    </div>
+    </form>
   </div>
   <div class="login-registration">
     <div class="login-registration__label">New to Scratch?

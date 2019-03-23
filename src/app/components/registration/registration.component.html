@@ -1,18 +1,26 @@
 <div class="registration">
-  <ui-field-input class="registration__field"
-    [placeholder]="'Username'"
-    [(value)]="testValue"
-  ></ui-field-input>
-  <ui-field-input class="registration__field"
-    [placeholder]="'Email'"
-    [(value)]="testValue"
-  ></ui-field-input>
-  <ui-field-input class="registration__field"
-    [placeholder]="'Password'"
-    [(value)]="testValue"
-  ></ui-field-input>
-  <ui-button
-    [text]="'Sign Up'"
-    (onClick)="onSubmit()"
-  ></ui-button>
+  <form novalidate
+        [formGroup]="formGroup"
+        (ngSubmit)="onSubmit()"
+  >
+    <div class="registration-form" formGroupName="user">
+      <ui-text-input class="registration__field"
+                     formControlName="username"
+                     [placeholder]="'Username'"
+      ></ui-text-input>
+      <ui-text-input class="registration__field"
+                     formControlName="email"
+                     [placeholder]="'Email'"
+      ></ui-text-input>
+      <ui-password-input class="registration__field"
+                         formControlName="password"
+                         [placeholder]="'Password'"
+      ></ui-password-input>
+      <ui-button
+        [text]="'Sign Up'"
+        [disabled]="!formGroup.valid"
+        (onClick)="onSubmit()"
+      ></ui-button>
+    </div>
+  </form>
 </div>

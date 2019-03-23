@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-registration',
@@ -8,12 +9,25 @@ import { Component, OnInit } from '@angular/core';
 export class RegistrationComponent implements OnInit {
 
   public testValue: string = "";
+  public formGroup: FormGroup;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private formBuilder: FormBuilder) {
   }
 
-  onSubmit(){}
+  ngOnInit() {
+    this.formGroup = this.formBuilder.group({
+      user: this.formBuilder.group({
+        "username": ["", Validators.compose([Validators.required])],
+        "email": ["", Validators.compose([Validators.required, Validators.email])],
+        "password": ["", Validators.compose([Validators.required])]
+      })
+    });
+
+    this.formGroup.valueChanges.subscribe((value: any) => {
+    });
+  }
+
+  onSubmit() {
+  }
 
 }

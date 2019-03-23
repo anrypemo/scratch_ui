@@ -19,8 +19,12 @@
       background-color: #28a745;
     }
 
-    &:hover {
+    &:hover :not(:disabled) {
       border-color: black;
+    }
+
+    &:disabled {
+      opacity: .5;
     }
   }
 

@@ -15,9 +15,11 @@ import {LoginPageComponent} from "./components/pages/login-page/login-page.compo
 import {LoginComponent} from "./components/login-form/login.component";
 import {UiComponentsModule} from "./components/shared-components/ui-components/ui-components.module";
 import {TravelInfoComponent} from "./components/travel-info/travel-info.component";
-import {AuthGuard} from "./components/guards/auth.guard";
+import {AuthGuard} from "./guards/auth.guard";
 import {ResetPasswordComponent} from "./components/reset-password/reset.password.component";
 import { RegistrationComponent } from './components/registration/registration.component';
+import {LocalStorageService} from "./services/localstorage.service";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -35,13 +37,17 @@ import { RegistrationComponent } from './components/registration/registration.co
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     AngularSvgIconModule,
     UiComponentsModule
   ],
-  providers: [UserAuthService,
-    AuthGuard
+  providers: [
+    UserAuthService,
+    AuthGuard,
+    LocalStorageService
   ],
   bootstrap: [AppComponent]
 })
