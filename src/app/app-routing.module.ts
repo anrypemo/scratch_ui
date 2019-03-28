@@ -7,6 +7,7 @@ import {TravelInfoComponent} from "./components/travel-info/travel-info.componen
 import {AuthGuard} from "./guards/auth.guard";
 import {ResetPasswordComponent} from "./components/reset-password/reset.password.component";
 import {RegistrationComponent} from "./components/registration/registration.component";
+import {LibraryComponent} from "./components/library/library.component";
 
 const routes: Routes = [
   {
@@ -26,7 +27,7 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
-        path: 'info',
+        path: 'map',
         canActivate: [AuthGuard],
         component: TravelInfoComponent
       },
@@ -34,7 +35,12 @@ const routes: Routes = [
         path: 'registration',
         component: RegistrationComponent
       },
-      {path: '', redirectTo: 'info', pathMatch: 'full'}
+      {
+        path: 'library',
+        canActivate: [AuthGuard],
+        component: LibraryComponent
+      },
+      {path: '', redirectTo: 'map', pathMatch: 'full'}
     ]
   }
 ];

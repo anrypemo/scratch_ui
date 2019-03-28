@@ -20,6 +20,7 @@ import {ResetPasswordComponent} from "./components/reset-password/reset.password
 import { RegistrationComponent } from './components/registration/registration.component';
 import {LocalStorageService} from "./services/localstorage.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { LibraryComponent } from './components/library/library.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     LoginComponent,
     TravelInfoComponent,
     ResetPasswordComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    LibraryComponent
   ],
   imports: [
     BrowserModule,

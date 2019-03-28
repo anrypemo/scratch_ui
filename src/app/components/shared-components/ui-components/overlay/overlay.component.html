@@ -1,0 +1,12 @@
+<div class="ui-overlay__inner"
+     [style.zIndex]="zIndex"
+     [class._visible]="visible">
+  <div class="ui-overlay__inner-container"
+       [style.zIndex]="zIndex+1">
+    <ui-loader *ngIf="loading && !innerTemplate"
+               [visible]="visible"
+    ></ui-loader>
+    <ng-template *ngIf="innerTemplate"
+                 [ngTemplateOutlet]="innerTemplate"></ng-template>
+  </div>
+</div>

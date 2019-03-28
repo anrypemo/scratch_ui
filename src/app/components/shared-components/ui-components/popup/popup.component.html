@@ -1,0 +1,11 @@
+<ui-overlay [visible]="visible"
+            [loading]="false"
+            [innerTemplate]="popupTemplate">
+
+  <ng-template #popupTemplate class="ui-popup">
+    <div class="ui-popup__container">
+      <div class="ui-popup__close" (click)="_onClose()"></div>
+      <ng-template
+        [ngTemplateOutlet]="template"></ng-template>
+    </div>
+  </ng-template>

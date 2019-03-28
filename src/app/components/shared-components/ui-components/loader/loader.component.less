@@ -1,0 +1,26 @@
+.ui-loader {
+  display: none;
+  position: absolute;
+
+  &._visible {
+    display: block;
+  }
+}
+
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+  100% {-webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);}
+}
+@keyframes rotating {
+  100% {-webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);}
+}
+.ui-loader__image {
+  -webkit-animation: rotating 2s linear infinite;
+  -moz-animation: rotating 2s linear infinite;
+  -ms-animation: rotating 2s linear infinite;
+  -o-animation: rotating 2s linear infinite;
+  animation: rotating 2s linear infinite;
+}

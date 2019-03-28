@@ -1,0 +1,31 @@
+<div class="ui-attachment">
+  <div class="ui-attachment__area"
+       (click)="_onAreaClick()"
+       dropFiles (filesChangeEmiter)="_onFileSelect($event)">
+    <div class="ui-attachment-label"
+    >Drop files or click here to select files
+    </div>
+  </div>
+  <div class="ui-attachment__added"
+       *ngIf="files.length > 0">
+    <table class="ui-attachment__list">
+      <tr *ngFor="let file of files; let i=index"
+          class="ui-attachment__item">
+        <td class="ui-attachment__item-name">{{file.name}}</td>
+        <td class="ui-attachment__item-size">{{_formatSize(file.size)}}</td>
+        <td class="ui-attachment__item-remove" (click)="_removeFile(i)"></td>
+      </tr>
+    </table>
+    <div class="ui-attachment__controls">
+      <ui-button
+        [text]="'Upload All'"
+        (onClick)="_onUpload()"></ui-button>
+      <ui-button
+        [text]="'Remove All'"
+        [type]="'delete'"
+        (onClick)="_removeAll()"></ui-button>
+    </div>
+  </div>
+
+  <input #fileInput class="ui-attachment__input" type="file" [multiple]="true" (change)="_onFileSelect($event)"/>
+</div>
