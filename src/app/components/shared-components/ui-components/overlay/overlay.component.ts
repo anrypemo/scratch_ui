@@ -17,6 +17,9 @@ export class UiOverlayComponent implements OnInit {
   @Input()
   public innerTemplate: TemplateRef<any>;
 
+  @Input()
+  public type: string = "fixed";
+
   private _visible: boolean;
 
   @Input()

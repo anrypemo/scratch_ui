@@ -1,15 +1,16 @@
 <div class="ui-attachment">
   <div class="ui-attachment__area"
        (click)="_onAreaClick()"
-       dropFiles (filesChangeEmiter)="_onFileSelect($event)">
+       dropFiles (filesChangeEmiter)="_onFileSelect($event)"
+       (drop)="_onFileSelect($event)">
     <div class="ui-attachment-label"
     >Drop files or click here to select files
     </div>
   </div>
   <div class="ui-attachment__added"
-       *ngIf="files.length > 0">
+       *ngIf="validFiles.length > 0">
     <table class="ui-attachment__list">
-      <tr *ngFor="let file of files; let i=index"
+      <tr *ngFor="let file of validFiles; let i=index"
           class="ui-attachment__item">
         <td class="ui-attachment__item-name">{{file.name}}</td>
         <td class="ui-attachment__item-size">{{_formatSize(file.size)}}</td>
@@ -28,4 +29,22 @@
   </div>
 
   <input #fileInput class="ui-attachment__input" type="file" [multiple]="true" (change)="_onFileSelect($event)"/>
+  <ui-overlay [visible]="isUploading"
+              [loading]="true"
+              [type]="'relative'"></ui-overlay>
 </div>
+<ui-popup
+  [visible]="isShowErrorPopup"
+  [template]="errorContent"
+  [caption]="'Invalid Extension'"
+  (onClose)="errorPopupClosed()"
+></ui-popup>
+<ng-template #errorContent>
+  <div class="ui-attachment__error">
+    <div class="ui-attachment__error-header">{{invalidFileTypeErrorMessage}}</div>
+    <div class="ui-attachment__error-content">
+      <div *ngFor="let file of invalidFiles"
+        class="ui-attachment__error-content__item">{{file.name}}</div>
+    </div>
+  </div>
+</ng-template>

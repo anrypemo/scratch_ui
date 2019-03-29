@@ -1,11 +1,20 @@
 .ui-overlay__inner {
-  position: fixed;
+  background-color: rgba(127, 131, 135, .6);
+  display: none;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(127, 131, 135, .6);
-  display: none;
+
+  &._fixed{
+    position: fixed;
+  }
+
+  &._relative {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
 
   &._visible {
     display: flex;

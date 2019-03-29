@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'ui-attachment',
@@ -13,7 +13,18 @@ export class UiAttachmentComponent implements OnInit {
   @Output()
   public onUpload = new EventEmitter<File[]>();
 
-  public files: File[] = [];
+  @Input()
+  public allowedExtensions: string[] = ["png", "jpg", "jpeg"];
+
+  public validFiles: File[] = [];
+
+  public invalidFiles: File[] = [];
+
+  public invalidFileTypeErrorMessage: string = "Such files has invalid file type, allowed types are: " + this.allowedExtensions.join(", ");
+
+  public isShowErrorPopup: boolean = false;
+
+  public isUploading: boolean = false;
 
 
   constructor() {
@@ -29,7 +40,14 @@ export class UiAttachmentComponent implements OnInit {
   public _onFileSelect(event) {
     let files = event.dataTransfer ? event.dataTransfer.files : event.target.files;
     for (let i = 0; i < files.length; i++) {
-      this.files.push(files[i]);
+      if (this.isFileExtensionValid(files[i])) {
+        this.validFiles.push(files[i]);
+      } else {
+        this.invalidFiles.push(files[i]);
+      }
+    }
+    if (this.invalidFiles.length > 0) {
+      this.isShowErrorPopup = true;
     }
   }
 
@@ -47,16 +65,35 @@ export class UiAttachmentComponent implements OnInit {
   }
 
   public _removeFile(index: number) {
-    this.files.splice(index, 1);
+    this.validFiles.splice(index, 1);
   }
 
   public _removeAll() {
-    this.files = [];
+    this.validFiles = [];
   }
 
   public _onUpload() {
-    this.onUpload.emit(this.files);
+    this.onUpload.emit(this.validFiles);
+    this.isUploading = true;
   }
 
+  private getFileExtension(file: File): string {
+    return file.name.split(".").pop();
+  }
 
+  private isFileExtensionValid(file: File) {
+    let type = this.getFileExtension(file);
+    let isValid = false;
+    this.allowedExtensions.forEach(extension => {
+      if (type.toLowerCase().indexOf(extension.toLowerCase()) >= 0) {
+        isValid = true;
+      }
+    });
+    return isValid;
+  }
+
+  public errorPopupClosed() {
+    this.isShowErrorPopup = false;
+    this.invalidFiles = [];
+  }
 }

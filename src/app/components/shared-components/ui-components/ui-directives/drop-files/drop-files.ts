@@ -9,6 +9,7 @@ export class DropFilesDirective {
 
   @HostListener('drop', ['$event'])
   public onDrop(evt) {
+    console.log(evt);
     evt.preventDefault();
     evt.stopPropagation();
     let files = evt.dataTransfer.files;

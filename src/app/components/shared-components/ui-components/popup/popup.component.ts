@@ -16,6 +16,9 @@ export class UiPopupComponent implements OnInit {
   @Output()
   public onClose = new EventEmitter();
 
+  @Input()
+  public caption: string = "";
+
   constructor() {
   }
 

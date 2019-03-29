@@ -5,6 +5,8 @@
   <ng-template #popupTemplate class="ui-popup">
     <div class="ui-popup__container">
       <div class="ui-popup__close" (click)="_onClose()"></div>
+      <div *ngIf="caption.trim().length > 0"
+           class="ui-popup__caption">{{caption}}</div>
       <ng-template
         [ngTemplateOutlet]="template"></ng-template>
     </div>
