@@ -2,8 +2,8 @@
      [class._visible]="visible"
      [style.top]="'calc(50% - '+size/2+'px)'"
      [style.left]="'calc(50% - '+size/2+'px)'">
-  <img class="ui-loader__image"
-       src="/assets/images/loading-rose.png"
+  <img class="ui-loader__image _{{type}}"
+       src={{loaderImageUrl}}
        [style.width.px]="size"
        [style.heigth.px]="size"
   >

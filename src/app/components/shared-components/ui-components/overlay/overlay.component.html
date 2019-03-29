@@ -5,6 +5,7 @@
        [style.zIndex]="zIndex+1">
     <ui-loader *ngIf="loading && !innerTemplate"
                [visible]="visible"
+               [type]="'plane'"
     ></ui-loader>
     <ng-template *ngIf="innerTemplate"
                  [ngTemplateOutlet]="innerTemplate"></ng-template>

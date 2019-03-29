@@ -8,19 +8,18 @@
 }
 
 @-webkit-keyframes rotating /* Safari and Chrome */ {
-  100% {-webkit-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
+  100% {
     transform: rotate(360deg);}
 }
 @keyframes rotating {
-  100% {-webkit-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
+  100% {
     transform: rotate(360deg);}
 }
 .ui-loader__image {
-  -webkit-animation: rotating 2s linear infinite;
-  -moz-animation: rotating 2s linear infinite;
-  -ms-animation: rotating 2s linear infinite;
-  -o-animation: rotating 2s linear infinite;
   animation: rotating 2s linear infinite;
+
+  &._plane {
+    transform-origin: top right;
+    animation-direction: reverse;
+  }
 }
