@@ -3,12 +3,16 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {catchError, map} from "rxjs/internal/operators";
 import {LocalStorageService} from "./localstorage.service";
+import {HttpService} from "./http.service";
+import {Router} from "@angular/router";
 
 
 @Injectable()
 export class UserAuthService {
   constructor(private http: HttpClient,
-              private localStorage: LocalStorageService) {
+              private localStorage: LocalStorageService,
+              private httpService: HttpService,
+              private router: Router) {
   }
 
   login(username: string, password: string) {
@@ -21,11 +25,10 @@ export class UserAuthService {
       'Authorization': 'Basic ' + btoa('scratch-client:scratch-secret'),
       'Content-type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post('http://localhost:8080/' + 'oauth/token', loginPayload, {headers}).
-    pipe(map(data => {
-      this.localStorage.setItem('token', JSON.stringify(data));
-      return true;
-    }),
+    return this.http.post('http://localhost:8080/' + 'oauth/token', loginPayload, {headers}).pipe(map(data => {
+        this.localStorage.setItem('token', data);
+        return true;
+      }),
       catchError(() => {
         return Observable.empty();
       })
@@ -33,15 +36,19 @@ export class UserAuthService {
   }
 
   logout() {
+    this.localStorage.removeItem("token");
+    this.router.navigate(['login']);
+
 
   }
 
   getCurrentUser() {
-    return null;
+    return this.httpService.get("http://localhost:8080/user");
   }
 
   test(user): Observable<any> {
-    return this.http.post<any>('http://localhost:8080/login', user);
+    return this.httpService.post('http://localhost:8080/login', user);
   }
+
 
 }

@@ -1,0 +1,41 @@
+.header-customer-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  width: 100px;
+  position: absolute;
+  top: -27px;
+
+  &:hover {
+    & .header-customer-info__name {
+      background-color: white;
+    }
+
+    & .header-customer-info__menu {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__name {
+    font-size: 14px;
+    background-color: transparent;
+    height: 22px;
+    padding: 20px 5px 12px 5px;
+  }
+
+  &__menu {
+    display: none;
+    background-color: white;
+    border: 1px solid #24292e;
+  }
+
+  &__item {
+    border-top: 1px solid #24292e;
+    cursor: pointer;
+
+    &:first-child {
+      border-top: none;
+    }
+  }
+}

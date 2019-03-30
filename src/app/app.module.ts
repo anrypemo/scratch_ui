@@ -21,6 +21,8 @@ import { RegistrationComponent } from './components/registration/registration.co
 import {LocalStorageService} from "./services/localstorage.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LibraryComponent } from './components/library/library.component';
+import {HttpService} from "./services/http.service";
+import {HeaderCustomerInfoComponent} from "./components/header/header-customer-info/header.customer.info.component";
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import { LibraryComponent } from './components/library/library.component';
     TravelInfoComponent,
     ResetPasswordComponent,
     RegistrationComponent,
-    LibraryComponent
+    LibraryComponent,
+    HeaderCustomerInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import { LibraryComponent } from './components/library/library.component';
   providers: [
     UserAuthService,
     AuthGuard,
-    LocalStorageService
+    LocalStorageService,
+    HttpService
   ],
   bootstrap: [AppComponent]
 })
