@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class HeaderComponent implements OnInit {
 
-  public currentUser: string;
+  public currentUser: User;
 
 
   constructor(private userAuthService: UserAuthService,
@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.userAuthService.getCurrentUser().subscribe(data=>{
-      this.currentUser = data.username;
+      this.currentUser = data;
     })
   }
 
