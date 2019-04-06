@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {Observable} from "rxjs/Rx";
-import {HttpClient} from "@angular/common/http";
+import {HttpService} from "../../services/http.service";
+import {Country} from "../../model/country";
 
 @Component({
   selector: 'scratch-travel-info',
@@ -12,32 +12,18 @@ export class TravelInfoComponent implements OnInit {
   private countriesUrl = "./assets/countries_id_list.json";
   public dummyData: any;
   public dataTemp = new Map();
-  public countries: any[] = [];
-  public mapUrl="assets/black_world_map.svg";
+  public countries: Country[] = [];
+  public mapUrl = "assets/black_world_map.svg";
 
 
-  constructor(private http: HttpClient) {
+  constructor(private httpService: HttpService) {
   }
 
   ngOnInit() {
-   this.createCountriesList();
-  }
-
-  public getJSON(): Observable<any[]> {
-    return this.http.get<any[]>(this.countriesUrl);
-  }
-
-  createDummyData() {
-    this.countries.forEach(country => {
-      this.dataTemp.set(country, Math.random());
-    });
-    this.dummyData = this.dataTemp;
-  }
-
-  createCountriesList() {
-    this.getJSON().subscribe(data => {
+    this.httpService.get("/country").subscribe(data => {
       this.countries = data;
-      this.createDummyData();
-    });
+    })
   }
+
+
 }

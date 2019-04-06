@@ -5,6 +5,7 @@ import {catchError, map} from "rxjs/internal/operators";
 import {LocalStorageService} from "./localstorage.service";
 import {HttpService} from "./http.service";
 import {Router} from "@angular/router";
+import {environment} from "../../environments/environment";
 
 
 @Injectable()
@@ -25,7 +26,7 @@ export class UserAuthService {
       'Authorization': 'Basic ' + btoa('scratch-client:scratch-secret'),
       'Content-type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post('http://localhost:9090/' + 'oauth/token', loginPayload, {headers}).pipe(map(data => {
+    return this.http.post(environment.apiEndpoint + '/oauth/token', loginPayload, {headers}).pipe(map(data => {
         this.localStorage.setItem('token', data);
         return true;
       }),
@@ -43,11 +44,7 @@ export class UserAuthService {
   }
 
   getCurrentUser() {
-    return this.httpService.get("http://localhost:9090/user");
-  }
-
-  test(user): Observable<any> {
-    return this.httpService.post('http://localhost:9090/login', user);
+    return this.httpService.get("/user");
   }
 
 

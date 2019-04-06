@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Country} from "../../../model/country";
 
 const WIDTH_HEIGHT_PARAMETER = 1.53;
 
@@ -10,7 +11,7 @@ const WIDTH_HEIGHT_PARAMETER = 1.53;
 export class MapComponent implements OnInit {
 
   @Input()
-  public countries: any[] = [];
+  public countries: Country[] = [];
   @Input()
   public mapUrl;
   @Input()
